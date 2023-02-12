@@ -1,0 +1,217 @@
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
+{% load static %}
+<section id="header" class="mb-4">
+    <div class="container">
+        <header
+                class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2">
+            <a href="#home"
+               class="d-flex align-items-center col-md-2 mb-3 mb-md-0 text-dark text-decoration-none">
+                <img class="bi me-2 img-fluid" width="160" src="{% static 'site_css/img/home/logo.png' %}"/>
+            </a>
+            <div class="col-4 display-market-first">
+                <img class="img-fluid"
+                     src="{% static 'site_css/img/home/image.psd.png' %}" alt=""
+                     srcset="">
+            </div>
+            <ul class="nav justify-content-end ">
+                <li class="nav-item me-4 ">
+                    <div class=" text-center" style="font-size: 14px;">
+                        <p class="m-0"><a style="color: #344863; text-decoration: none;"
+                                          href="tel:+375 33 123 12 12">+375 33 123 12 12</a>
+                        </p>
+                        <p class="m-0" style="color: #7D879C;">Круглосуточно</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                        {% block nav_account_navbar_authenticated %}
+                            <a href="{% url 'customer:summary' %}"
+                               class="btn display-button-showf-first btn-outline-primary me-2 background-button-outline background-icons">
+                                <i class="bi bi-person"></i> Аккаунт
+                            </a>
+                            <a href="{% url 'customer:summary' %}"
+                               class="display-button-showT-first btn btn-outline-primary me-2 background-button-outline   background-icons">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        {% endblock %}
+                    {% else %}
+                        <a href="{% url 'customer:login' %}"
+                           class="btn display-button-showf-first btn-outline-primary me-2 background-button-outline   background-icons">
+                            <i class="bi bi-person"></i> Войти
+                        </a>
+                        <a href="{% url 'customer:login' %}"
+                           class="display-button-showT-first btn btn-outline-primary me-2 background-button-outline   background-icons">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    {% endif %}
+
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="#"
+                           class="btn btn-primary me-2 rounded-circle background-button background-icons">
+                            <i class="bi bi-heart"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a href="{% url 'basket:summary' %}"
+                       class="btn display-button-showf-first btn-outline-primary background-icons background-button">
+                        <i class="bi bi-cart"></i> Корзина
+                    </a>
+                    <a href="{% url 'basket:summary' %}" type="button"
+                       class="display-button-showT-first btn btn-outline-primary background-icons background-button">
+                        <i class="bi bi-cart"></i>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        {#  Search #}
+        <div id="search-block">
+            <form method="GET" action="{% url 'search:search' %}">
+                <div class="input-group mb-3">
+					<span class="input-group-text span-color-group" id="basic-addon1"><i
+                            class="bi bi-search"></i></span>
+                    <input type="text" name="q" class="input-search form-control"
+                           placeholder="По названию или веществу..."
+                           aria-describedby="button-addon2">
+                    <button class="button-search btn btn-primary" type="submit" id="button-addon2">
+                        Найти
+                    </button>
+                </div>
+            </form>
+        </div>
+        {#  Search #}
+
+        <div class="nav-scroller py-1 mb-2">
+            <div class=" d-flex justify-content-center">
+                <nav class="nav d-flex justify-content-between">
+                    <a class="p-2 a-type" href="#">
+                        <h5 class="me-3 text-decor">Лекарства</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Витамины и БАДы</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Красота</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Гигиена</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Линзы</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Мать и дитя</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class="me-3 text-decor">Медтовары</h5>
+                    </a>
+                    <a class="p-2 a-type link-secondary" href="#">
+                        <h5 class=" text-decor">Медтехника</h5>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2  a-type a-font-size-nav3 button-sales" href="#">
+                    <i class="bi bi-percent"></i> Скидки
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Аллергия
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Диабет
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Гигиена
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Антибиотики
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Избыточный вес
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Пищеварительная система
+                </a>
+                <a class="p-2 a-type link-secondary a-font-size-nav3" href="#">
+                    Простуда и грипп
+                </a>
+                <a class="p-2  a-type a-font-size-nav3 button-more" href="meta.html">
+                    Еще 30
+                </a>
+            </nav>
+        </div>
+    </div>
+</section>
+{##}
+{#<nav class="{% block nav_classes %}navbar navbar-expand-lg navbar-dark bg-dark{% endblock %}">#}
+{#    {% block navbar_toggler %}#}
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"#}
+{#                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#            <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+{#    {% endblock %}#}
+{##}
+{##}
+{#    {% block navbar_basket %}#}
+{#        <a class="btn btn-secondary float-right btn-cart ml-auto d-inline-block d-md-none"#}
+{#           href="{% url 'basket:summary' %}">#}
+{#            <i class="fas fa-shopping-cart"></i>#}
+{#            {% trans "Basket" %}#}
+{#            {% if not request.basket.is_empty %}#}
+{#                {% if request.basket.is_tax_known %}#}
+{#                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}#}
+{#                        Total: {{ total }}#}
+{#                    {% endblocktrans %}#}
+{#                {% else %}#}
+{#                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}#}
+{#                        Total: {{ total }}#}
+{#                    {% endblocktrans %}#}
+{#                {% endif %}#}
+{#            {% endif %}#}
+{#        </a>#}
+{#    {% endblock %}#}
+{##}
+{#    {% block navbar_collapse %}#}
+{#        <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#            {% block nav %}#}
+{#                <ul class="navbar-nav mr-auto">#}
+{#                    {% block nav_items %}#}
+{#                        <li class="nav-item dropdown">#}
+{#                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"#}
+{#                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                                {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}#}
+{#                            </a>#}
+{#                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#                                {% category_tree depth=1 as tree_categories %}#}
+{#                                <a class="dropdown-item"#}
+{#                                   href="{% url 'catalogue:index' %}">{% trans "All products" %}</a>#}
+{#                                {% if tree_categories %}#}
+{#                                    <div class="dropdown-divider"></div>#}
+{#                                    {% for tree_category in tree_categories %}#}
+{#                                        <a class="dropdown-item"#}
+{#                                           href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>#}
+{#                                    {% endfor %}#}
+{#                                {% endif %}#}
+{#                                <div class="dropdown-divider"></div>#}
+{#                                {% block nav_dropdown_extra_items %}#}
+{#                                    <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>#}
+{#                                {% endblock %}#}
+{#                            </div>#}
+{#                        </li>#}
+{#                    {% endblock %}#}
+{#                </ul>#}
+{#            {% endblock %}#}
+{##}
+{#            {% block nav_extra %}#}
+{#                {% include "oscar/partials/search.html" %}#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    {% endblock %}#}
+{#</nav>#}

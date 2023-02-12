@@ -1,0 +1,79 @@
+.end-50 {
+    right: 20% !important;
+}
+
+.start-50 {
+    left: 20% !important;
+}
+
+.bread-link {
+    color: #344863;
+    text-decoration: none;
+
+}
+
+.bread-link:hover {
+    border-bottom: 2px solid;
+    color: #344863;
+}
+
+.card-title {
+    color: #344863;
+}
+
+.card-text {
+    color: #A8B1C1;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #C71878;
+    border-color: #C71878;
+}
+
+
+.btn-danger:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(199 24 120 / 19%);
+}
+
+.btn-danger:active {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+}
+
+.btn-danger:focus {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+    box-shadow: 0 0 0 0.25rem rgb(199 24 120 / 19%);
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+}
+
+
+.display-emailSends-showF {
+    display: block;
+}
+
+/* media  show=False */
+@media (max-width: 990px) {
+    .display-emailSends-showF {
+        display: none;
+    }
+}
+
+
+.display-emailSends-showT {
+    display: none;
+}
+
+@media (max-width: 990px) {
+    .display-emailSends-showT {
+        display: block;
+    }
+}

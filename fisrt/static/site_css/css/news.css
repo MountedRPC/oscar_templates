@@ -1,0 +1,18 @@
+.bread-link {
+    color: #344863;
+    text-decoration: none;
+
+}
+
+.bread-link:hover {
+    border-bottom: 2px solid;
+    color: #344863;
+}
+
+.card-title {
+    color: #344863;
+}
+
+.card-text {
+    color: #A8B1C1;
+}

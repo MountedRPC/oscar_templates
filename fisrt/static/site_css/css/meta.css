@@ -1,0 +1,40 @@
+.mb-25 {
+    margin-bottom: 2.5rem !important;
+}
+
+.type-link-active {
+    color: #C71878;
+    text-decoration: none;
+}
+
+.type-link-active:hover {
+    color: #C71878;
+    text-decoration: none;
+}
+
+.type-link-active:focus {
+    color: #C71878;
+    text-decoration: none;
+}
+
+.type-link-active:active {
+    color: #C71878;
+    text-decoration: none;
+}
+
+.type-link {
+    color: #344863;
+    text-decoration: none;
+}
+
+.type-link:hover {
+    color: #C71878;
+}
+
+.type-link:active {
+    color: #C71878;
+}
+
+.type-link:focus {
+    color: #C71878;
+}

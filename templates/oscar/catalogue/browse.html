@@ -1,0 +1,855 @@
+{% extends "oscar/layout_2_col.html" %}
+
+{% load basket_tags %}
+{% load category_tags %}
+{% load product_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
+{% endblock %}
+{% block custom_css_pages %}
+    <link rel="stylesheet" href="{% static 'site_css/css/catalog.css' %}">
+{% endblock %}
+
+{% block headertext %}{{ summary }}{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+             aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/" class="bread-link">
+                        Главная
+                    </a>
+                </li>
+                <li style="color: #C71878;" class="breadcrumb-item active" aria-current="page">
+                    Каталог
+                </li>
+            </ol>
+        </nav>
+    </div>
+{% endblock breadcrumbs %}
+
+
+{% block column_left %}
+    <div class="col-md-3 display-filter-show">
+        <div class="card mb-5" style="border-radius: 15px;border-color: #E0E9FF;">
+            <div class="card-header" style="background-color: #70C311; color: #FFFFFF;border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;">
+                Категории
+            </div>
+            <div class="scrollbar" id="style-1">
+                <div class="card-body" style=" max-height: 450px;">
+                    <div class="force-overflow">
+                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">
+                                    A second item item item itemv item
+                                </a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A third item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A fourth item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">And a fifth one</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A second item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A third item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A fourth item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">And a fifth one</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A second item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A third item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">A fourth item</a>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <a href="catalog_category.html" class="filter-item">And a fifth one</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-5" style="border-radius: 15px;border-color: #E0E9FF;">
+            <div class="card-header" style="background-color: #70C311; color: #FFFFFF;border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;">
+                Производитель
+            </div>
+            <div class="scrollbar" id="style-1">
+                <div class="card-body" style=" max-height: 350px;">
+                    <div class="force-overflow">
+                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="1">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="1">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="2">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="2">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="3">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="3">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="4">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="4">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="6">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="6">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="7">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="7">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="8">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="8">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="9">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="9">
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="10">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="10">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="11">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="11">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="12">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="12">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="13">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="13">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card  mb-5" style="border-radius: 15px;border-color: #E0E9FF;">
+            <div class="card-header" style="background-color: #70C311; color: #FFFFFF;border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;">
+                Страна
+            </div>
+            <div class="scrollbar" id="style-1">
+                <div class="card-body" style=" max-height: 350px;">
+                    <div class="force-overflow">
+                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="1s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="1s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="2s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="2s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="3s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="3s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="4s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="4s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="6s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="6s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="7s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="7s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="8s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="8s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="9s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="9s">
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="10s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="10s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="11s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="11s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="12s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="12s">
+                                </div>
+                            </li>
+                            <li class="list-group-item list-item-padding">
+                                <div class="form-check" style="padding-left:0;">
+                                    <label class="form-check-label" for="13s">
+                                        Default
+                                    </label>
+                                    <input style="float: right;" class="form-check-input" type="checkbox" value=""
+                                           id="13s">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4" style="border-radius: 15px;border-color: #E0E9FF;">
+            <div class="card-header" style="background-color: #70C311; color: #FFFFFF;border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;">
+                Розничная цена
+            </div>
+            <div class="card-body" style=" max-height: 350px;">
+                <div id="RangeSlider" class="range-slider">
+                    <div>
+                        <div class="range-slider-val-left"></div>
+                        <div class="range-slider-val-right"></div>
+                        <div class="range-slider-val-range"></div>
+
+                        <span class="range-slider-handle range-slider-handle-left"></span>
+                        <span class="range-slider-handle range-slider-handle-right"></span>
+
+                        <div class="range-slider-tooltip range-slider-tooltip-left">
+                            <span class="range-slider-tooltip-text"></span>
+                        </div>
+
+                        <div class="range-slider-tooltip range-slider-tooltip-right">
+                            <span class="range-slider-tooltip-text"></span>
+                        </div>
+                    </div>
+
+                    <input type="range" class="range-slider-input-left" tabindex="0" max="100" min="0" step="1">
+                    <input type="range" class="range-slider-input-right" tabindex="0" max="100" min="0" step="1">
+                </div>
+            </div>
+        </div>
+        <div class="d-grid ">
+            <button class="btn btn-success">Применить</button>
+        </div>
+    </div>
+    {% category_tree as tree_categories %}
+    {#    {% if tree_categories %}#}
+    {#        <h4>{% trans "Show results for" %}</h4>#}
+    {#        <div class="side_categories card card-body bg-light">#}
+    {#            <ul class="nav nav-list flex-column">#}
+    {#                {% for tree_category in tree_categories %}#}
+    {#                    <li class="mt-2">#}
+    {#                        <a href="{{ tree_category.url }}">#}
+    {#                            {% if tree_category.pk == category.pk %}#}
+    {#                                <strong>{{ tree_category.name }}</strong>#}
+    {#                            {% else %}#}
+    {#                                {{ tree_category.name }}#}
+    {#                            {% endif %}#}
+    {#                        </a>#}
+    {##}
+    {#                        {% if tree_category.has_children %}#}
+    {#                            <ul>{% else %}</li>{% endif %}#}
+    {#                        {% for n in tree_category.num_to_close %}#}
+    {#                            </ul></li>#}
+    {#                        {% endfor %}#}
+    {#                {% endfor %}#}
+    {#            </ul>#}
+    {#        </div>#}
+    {#    {% endif %}#}
+    {#    {% if has_facets %}#}
+    {#        <h4>{% trans "Refine by" %}</h4>#}
+    {#        <div class="side_categories card card-body bg-light">#}
+    {#            {% for field, data in facet_data.items %}#}
+    {#                {% if data.results %}#}
+    {#                    {% include 'oscar/search/partials/facet.html' with name=data.name items=data.results %}#}
+    {#                {% endif %}#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {#    {% endif %}#}
+{% endblock %}
+
+{% block content %}
+    <div class="col">
+        {# Marketing #}
+        <div class="row display-marketing-show">
+            <div class="col-md-6">
+                <img src="static/img/home/1sales.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6">
+                <img src="static/img/home/1sales.png" class="img-fluid" alt="">
+            </div>
+        </div>
+        {# Marketing #}
+
+        {# Sorting #}
+        <div class="row mb-3 mt-4">
+            <div class="col-auto text-start">
+                <button class="btn btn-secondary display-offcanvas-button-show" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Фильтры
+                </button>
+                <div class="offcanvas offcanvas-start" style="max-width: 80%;" tabindex="-1" id="offcanvasExample"
+                     aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header" style="background-color: #70C311;color: #FFFFFF;">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Фильтры</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="card mb-4" style="border-color: #E0E9FF;">
+                            <div class="card-header" style=" color: #344863">
+                                Категории
+                            </div>
+                            <div class="scrollbar" id="style-1">
+                                <div class="card-body" style=" max-height: 450px;">
+                                    <div class="force-overflow">
+                                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                                            <li class="list-group-item list-item-padding">
+
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    second item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    third item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    fourth item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">And
+                                                    a fifth one</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    second item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    third item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">A
+                                                    fourth item</a>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <a href="catalog_category.html" class="filter-item">And
+                                                    a fifth one</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="border-color: #E0E9FF;">
+                            <div class="card-header" style="color: #344863;">
+                                Производитель
+                            </div>
+                            <div class="scrollbar" id="style-1">
+                                <div class="card-body" style=" max-height: 350px;">
+                                    <div class="force-overflow">
+                                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="1s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="1s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="2s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="2s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="3s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="3s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="4s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="4s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="6s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="6s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="7s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="7s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="8s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="8s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="9s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="9s">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="10s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="10s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="11s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="11s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="12s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="12s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="13s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="13s">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="border-color: #E0E9FF;">
+                            <div class="card-header" style="color: #344863;">
+                                Страна
+                            </div>
+                            <div class="scrollbar" id="style-1">
+                                <div class="card-body" style=" max-height: 350px;">
+                                    <div class="force-overflow">
+                                        <ul class="list-group list-group-flush" style="color: #6C7B97;">
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="1s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="1s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="2s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="2s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="3s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="3s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="4s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="4s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="6s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="6s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="7s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="7s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="8s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="8s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="9s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="9s">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="10s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="10s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="11s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="11s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="12s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="12s">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-item-padding">
+                                                <div class="form-check" style="padding-left:0;">
+                                                    <label class="form-check-label" for="13s">
+                                                        Default
+                                                    </label>
+                                                    <input style="float: right;" class="form-check-input"
+                                                           type="checkbox" value="" id="13s">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="border-color: #E0E9FF;">
+                            <div class="card-header" style="color: #344863;">
+                                Розничная цена
+                            </div>
+                            <div class="card-body" style=" max-height: 350px;">
+                                <div id="RangeSlider1" class="range-slider">
+                                    <div>
+                                        <div class="range-slider-val-left"></div>
+                                        <div class="range-slider-val-right"></div>
+                                        <div class="range-slider-val-range"></div>
+
+                                        <span class="range-slider-handle range-slider-handle-left"></span>
+                                        <span class="range-slider-handle range-slider-handle-right"></span>
+
+                                        <div class="range-slider-tooltip range-slider-tooltip-left">
+                                            <span class="range-slider-tooltip-text"></span>
+                                        </div>
+
+                                        <div class="range-slider-tooltip range-slider-tooltip-right">
+                                            <span class="range-slider-tooltip-text"></span>
+                                        </div>
+                                    </div>
+                                    <input type="range" class="range-slider-input-left" tabindex="0" max="100" min="0"
+                                           value="" step="1">
+                                    <input type="range" class="range-slider-input-right" tabindex="0" max="100" value=""
+                                           min="0" step="1">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid ">
+                            <button class="btn btn-success">Применить</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col text-end ">
+                <div class="dropdown">
+                    <label for="sorting" class="me-3 hide-label-sorting" style="color: #344863;">Сортировать</label>
+                    <button id="sorting" class="btn btn-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Без фильтра
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Алфавит</a></li>
+                        <li><a class="dropdown-item" href="#">Популярности</a></li>
+                        <li><a class="dropdown-item" href="#">Оценки</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {# Sorting #}
+        {# Grid product #}
+        <div class="row row-cols-1 row-cols-md-3">
+            <form method="get">
+                {# Render other search params as hidden inputs #}
+                {% for value in selected_facets %}
+                    <input type="hidden" name="selected_facets" value="{{ value }}"/>
+                {% endfor %}
+                <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}"/>
+
+                {% if paginator.count %}
+                    {% if paginator.num_pages > 1 %}
+                        {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
+                            <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to
+                            <strong>{{ end }}</strong>.
+                        {% plural %}
+                            <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to
+                            <strong>{{ end }}</strong>.
+                        {% endblocktrans %}
+                    {% else %}
+                        {% blocktrans count num_results=paginator.count %}
+                            <strong>{{ num_results }}</strong> result.
+                        {% plural %}
+                            <strong>{{ num_results }}</strong> results.
+                        {% endblocktrans %}
+                    {% endif %}
+                    {% if form %}
+                        <div class="float-right">
+                            {% include "oscar/partials/form_field.html" with field=form.sort_by style='horizontal' %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <p>
+                        {% trans "<strong>0</strong> results." %}
+                    </p>
+                {% endif %}
+            </form>
+            {% if products %}
+                {% for product in products %}
+                    <div class="col mb-3">
+                        <div class="card " style="border-radius: 15px; border-color: #E0E9FF;">
+                            <div class="text-center">
+                                <div class="position-relative ">
+                                    <div class="position-absolute top-0 start-0 p-4">
+                                        <div class="hit mt-1">ХИТ</div>
+                                    </div>
+                                    <div class="position-absolute top-0 end-0 p-4">
+                                        <button class="btn-primary btn btn-like rounded-circle text-center"><i
+                                                class="bi bi-heart-fill"></i></button>
+                                    </div>
+                                </div>
+                                <img src="{{ product }}" style="width: 60%;"
+                                     class="pt-4 card-img-top text-center" alt="...">
+                            </div>
+                            {% render_product product %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% include "oscar/partials/pagination.html" %}
+            {% else %}
+                <p class="nonefound">{% trans "No products found." %}</p>
+            {% endif %}
+            {# Grid product #}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block custom_js_pages %}
+    <script>
+        const collapseElementList = document.querySelectorAll('.collapse')
+        const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
+    </script>
+    <script src="{% static 'site_css/js/bootstrap5/rangebardouble.js' %}"></script>
+{% endblock %}
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.search.init();
+{% endblock %}

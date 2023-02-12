@@ -1,0 +1,130 @@
+{% extends "oscar/layout.html" %}
+{% load i18n %}
+{% load static %}
+
+
+{% block title %}
+    {% trans 'Login or register' %} | {{ block.super }}
+{% endblock %}
+{% block custom_css_pages %}
+    <link rel="stylesheet" href="{% static 'site_css/css/login.css' %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="container mb-4">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+             aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/" class="bread-link">
+                        Главная
+                    </a>
+                </li>
+                <li style="color: #C71878;" class="breadcrumb-item active" aria-current="page">
+                    Авторизация и Регистрация
+                </li>
+            </ol>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="card" style="  border: 0.1px solid #E0E9FF;">
+            <div class="row g-0">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="card-body mt-5 m-4">
+                        <form id="login_form" action="{{ request.get_full_path }}" method="post">
+                            {% csrf_token %}
+                            <h1 class="h3 mb-3 fw-normal text-center" style="color: #344863;">Авторизация</h1>
+                            {#                        {% include "oscar/partials/form_fields.html" with form=login_form %}#}
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="Email"
+                                       required>
+                                <label for="floatingInput">Адрес электронной почты</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль"
+                                       required>
+                                <label for="floatingPassword">Пароль</label>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input class="form-check-input me-2" type="checkbox" id="checkboxNoLabel"
+                                           value="" aria-label="..." required> Соглашаюсь с
+                                    <a href="#privacy_policy"
+                                       style="color: #C71878; text-decoration: none;">
+                                        политикой конфиденциальности,
+                                        пользовательским соглашением и правилами бонусной программы </a>
+                                </label>
+                            </div>
+                            <button name="login_submit" class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="card-body mt-5 m-4">
+                        <form id="register_form" action="{{ request.get_full_path }}" method="post">
+                            <h1 class="h3 mb-3 fw-normal text-center" style="color: #344863;">Регистрация</h1>
+                            {% csrf_token %}
+                            {#                        {% include "oscar/partials/form_fields.html" with form=registration_form %}#}
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="Почта"
+                                       required>
+                                <label for="floatingInput">Адрес электронной почты</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль"
+                                       required>
+                                <label for="floatingPassword">Пароль</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword2" placeholder="Пароль"
+                                       required>
+                                <label for="floatingPassword2">Повторите пароль</label>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input class="form-check-input me-2" type="checkbox" id="checkboxNoLabel"
+                                           value="" aria-label="..." required> Соглашаюсь с
+                                    <a href="#privacy_policy"
+                                       style="color: #C71878; text-decoration: none;">
+                                        политикой конфиденциальности,
+                                        пользовательским соглашением и правилами бонусной программы </a>
+                                </label>
+                            </div>
+                            <button name="registration_submit" class="w-100 btn btn-lg btn-primary mb-3" type="submit">
+                                Зарегистрироваться
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <div class="row">#}
+    {#        <div class="col-sm-6 login_form">#}
+    {#            <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">#}
+    {#                <h2>{% trans 'Log In' %}</h2>#}
+    {#                {% csrf_token %}#}
+    {#                {% include "oscar/partials/form_fields.html" with form=login_form %}#}
+    {#                <p><a href="{% url 'password-reset' %}">{% trans "I've forgotten my password" %}</a></p>#}
+    {#                <button name="login_submit" type="submit" value="Log In" class="btn btn-lg btn-primary"#}
+    {#                        data-loading-text="{% trans "Logging in..." %}">{% trans 'Log In' %}</button>#}
+    {#            </form>#}
+    {#        </div>#}
+    {#        <div class="col-sm-6 register_form">#}
+    {#            <form id="register_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">#}
+    {#                <h2>{% trans 'Register' %}</h2>#}
+    {#                {% csrf_token %}#}
+    {#                {% include "oscar/partials/form_fields.html" with form=registration_form %}#}
+    {#                <button name="registration_submit" type="submit" value="Register" class="btn btn-lg btn-primary"#}
+    {#                        data-loading-text="{% trans 'Registering...' %}">{% trans 'Register' %}</button>#}
+    {#            </form>#}
+    {#        </div>#}
+    {#    </div>#}
+
+{% endblock content %}

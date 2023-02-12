@@ -1,0 +1,92 @@
+.bread-link {
+    color: #344863;
+    text-decoration: none;
+}
+
+.bread-link:hover {
+    border-bottom: 2px solid;
+    color: #344863;
+}
+
+.card-title {
+    color: #344863;
+}
+
+.card-text {
+    color: #A8B1C1;
+}
+
+.margin-btn-send {
+    margin-top: 1.9rem;
+}
+
+.hide-maps {
+    display: block;
+}
+
+.visible-maps {
+    display: none;
+}
+
+.hide-cards {
+    display: flex;
+}
+
+.visible-cards {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hide-maps {
+        display: none;
+    }
+    .visible-maps {
+        display: block;
+    }
+    .margin-btn-send {
+        margin-top: 0rem;
+    }
+    .hide-cards {
+        display: none;
+    }
+    .visible-cards {
+        display: flex;
+    }
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #C71878;
+    border-color: #C71878;
+}
+
+.btn-danger:active {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+}
+
+.btn-danger:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(199 24 120 / 19%);
+}
+
+.btn-danger:focus {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+    box-shadow: 0 0 0 0.25rem rgb(199 24 120 / 19%);
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background-color: #d63384;
+    border-color: #d63384;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #d63384;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(199 24 120 / 19%);
+}
